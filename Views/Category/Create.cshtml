@@ -3,11 +3,11 @@
 <form method="post">
     <div class="border p-3 mt-4 col-md-6 ">
         <div class="row pb-2">
-            <h2 class="text-primary"> 
+            <h2 class="text-primary">
                 Create Category
             </h2>
         </div>
-        <div asp-validation-summary="All"></div>
+        @* <div asp-validation-summary="ModelOnly"></div> *@  @* 3 types of summary -1 All, 2 ModelOnly , 3 None *@
         <div class="mb-3">
             <label asp-for="Name" class="p-1"></label>
             <input asp-for="Name" type="text" class="form-control" />
@@ -20,12 +20,20 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <button type="submit" class="btn btn-success form-control" >Create</button>
+                <button type="submit" class="btn btn-success form-control">Create</button>
             </div>
             <div class="col-6">
                 <a asp-action="Index" asp-controller="Category" class="btn btn-secondary form-control">Back To List</a>
             </div>
         </div>
-       
+
     </div>
 </form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+   
