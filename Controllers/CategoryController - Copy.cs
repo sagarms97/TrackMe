@@ -1,5 +1,4 @@
 ﻿using Bulky.DataAccess.Data;
-using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,16 +6,14 @@ namespace TrackMe.Controllers
 {
     public class CategoryController : Controller
     {
-        //  private readonly ApplicationDBContext _db;
-        private readonly ICategoryRepository _categoryRepo;
-        public CategoryController(ICategoryRepository db)
+        private readonly ApplicationDBContext _db;
+        public CategoryController(ApplicationDBContext db)
         {
-            _categoryRepo = db;
+            _db = db;
         }
         public IActionResult Index()
         {
-          //  List<Category> objCategoryList = _db.Categories.ToList();
-            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
+            List<Category> objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
         }
 
@@ -40,11 +37,8 @@ namespace TrackMe.Controllers
             //}
             if (ModelState.IsValid)
             {
-                //_db.Categories.Add(obj);
-                //_db.SaveChanges();                                          // once we created repository we don't need it
-
-                _categoryRepo.Add(obj);
-                _categoryRepo.save();
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
                 TempData["success"] = "Category Created SuccessFully";       //To Show Notification
                 return RedirectToAction("Index");
             }
@@ -58,10 +52,10 @@ namespace TrackMe.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _categoryRepo.Get(u=>u.Id==id);
-            //   Category? categoryFromDb = _db.Categories.Find(id); //Category obj , Find() is a method  // one way of Retrieving the Category
-            // Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u => u.Id==id); //it ll use link operation , // 2nd Way - Recommended
-            //  Category? categoryFromDb2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault(); //3rd Way 
+           
+            Category? categoryFromDb = _db.Categories.Find(id); //Category obj , Find() is a method  // one way of Retrieving the Category
+           // Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u => u.Id==id); //it ll use link operation , // 2nd Way - Recommended
+          //  Category? categoryFromDb2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault(); //3rd Way 
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -75,11 +69,8 @@ namespace TrackMe.Controllers
           //when we are updating , we will do the client side validation
             if (ModelState.IsValid)
             {
-                //_db.Categories.Update(obj);
-                //_db.SaveChanges();
-
-                _categoryRepo.update(obj);
-                _categoryRepo.save();
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
                 TempData["success"] = "Category Updated SuccessFully";
                 return RedirectToAction("Index");
             }
@@ -95,9 +86,7 @@ namespace TrackMe.Controllers
                 return NotFound();
             }
 
-            //  Category? categoryFromDb = _db.Categories.Find(id); 
-
-            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
+            Category? categoryFromDb = _db.Categories.Find(id); 
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -109,15 +98,13 @@ namespace TrackMe.Controllers
         public IActionResult DeletePOST(int? id)  //Do not Use Get & Post Method name Same when parameters are same
         {
             //1st we have to find that category from data base
-            // Category? obj = _db.Categories.Find(id);
-
-            Category? obj = _categoryRepo.Get(u => u.Id == id);
+            Category? obj = _db.Categories.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _categoryRepo.Remove(obj);   //remove method, which expects the category obj .
-            _categoryRepo.save();
+            _db.Categories.Remove(obj);   //remove method, which expects the category obj .
+            _db.SaveChanges();
             TempData["success"] = "Category Deleted SuccessFully";
             return RedirectToAction("Index");
           
