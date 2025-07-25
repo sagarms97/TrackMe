@@ -1,0 +1,70 @@
+﻿@model Product
+
+<form method="post">
+    @* <input asp-for="Id" hidden /> *@   @* You need to mention id , if in case name will be ProductId Somthing else *@
+    <div class="border p-3 mt-4 col-md-6 ">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Edit Product
+            </h2>
+        </div>
+        @* <div asp-validation-summary="ModelOnly"></div> *@  @* 3 types of summary -1 All, 2 ModelOnly , 3 None *@
+        <div class="p-1">
+            <label asp-for="Title" class="p-1"></label>
+            <input asp-for="Title"  type="text" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="p-1">
+            <label asp-for="Description" class="p-1"></label>
+            <input asp-for="Description"  type="number" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="p-1">
+            <label asp-for="ISBN" class="p-1"></label>
+            <input asp-for="ISBN"  type="number" class="form-control" />
+            <span asp-validation-for="ISBN" class="text-danger"></span>
+        </div>
+        <div class="p-1">
+            <label asp-for="Author" class="p-1"></label>
+            <input asp-for="Author"  type="number" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="p-1">
+            <label asp-for="ListPrice" class="p-1"></label>
+            <input asp-for="ListPrice"  type="number" class="form-control" />
+            <span asp-validation-for="ListPrice" class="text-danger"></span>
+        </div>
+        <div class="p-1">
+            <label asp-for="Price" class="p-1"></label>
+            <input asp-for="Price"  type="number" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="p-1">
+            <label asp-for="Price50" class="p-1"></label>
+            <input asp-for="Price50 "  type="number" class="form-control" />
+            <span asp-validation-for="Price50" class="text-danger"></span>
+        </div>
+        <div class="p-1">
+            <label asp-for="Price100" class="p-1"></label>
+            <input asp-for="Price100"  type="number" class="form-control" />
+            <span asp-validation-for="Price100" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-success form-control">Update</button>
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" asp-controller="Product" class="btn btn-secondary form-control">Back To List</a>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

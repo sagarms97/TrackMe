@@ -1,0 +1,71 @@
+﻿@model Product
+
+<form method="post">
+    <div class="border p-3 mt-4 col-md-6 ">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Delete Product
+            </h2>
+        </div>
+
+        <div class="p-1">
+            <label asp-for="Title" class="p-1"></label>
+            <input asp-for="Title" disabled type="text" class="form-control" />
+         
+        </div>
+        <div class="p-1">
+            <label asp-for="Description" class="p-1"></label>
+            <input asp-for="Description" disabled type="number" class="form-control" />
+            
+        </div>
+        <div class="p-1">
+            <label asp-for="ISBN" class="p-1"></label>
+            <input asp-for="ISBN" disabled type="number" class="form-control" />
+           
+        </div>
+        <div class="p-1">
+            <label asp-for="Author" class="p-1"></label>
+            <input asp-for="Author" disabled type="number" class="form-control" />
+           
+        </div>
+        <div class="p-1">
+            <label asp-for="ListPrice" class="p-1"></label>
+            <input asp-for="ListPrice" disabled type="number" class="form-control" />
+           
+        </div>
+        <div class="p-1">
+            <label asp-for="Price" class="p-1"></label>
+            <input asp-for="Price" disabled type="number" class="form-control" />
+          
+        </div>
+        <div class="p-1">
+            <label asp-for="Price50" class="p-1"></label>
+            <input asp-for="Price50 " disabled type="number" class="form-control" />
+            
+        </div>
+        <div class="p-1">
+            <label asp-for="Price100" class="p-1"></label>
+            <input asp-for="Price100" disabled type="number" class="form-control" />
+            
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-danger form-control">Delete</button>
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" asp-controller="Product" class="btn btn-secondary form-control">Back To List</a>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@* @section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" /> // we dont use validation for Delete . so delete validations
+    }
+}
+ *@
