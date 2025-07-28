@@ -2,6 +2,8 @@
 using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace TrackMe.Areas.Admin.Controllers
 {
@@ -21,6 +23,12 @@ namespace TrackMe.Areas.Admin.Controllers
             //  List<Product> objProductList = _db.Categories.ToList();
             //  List<Product> objProductList = _ProductRepo.GetAll().ToList();
             List<Product> objProductList = _unitofwork.Product.GetAll().ToList();
+            IEnumerable<SelectListItem> CategoryList = _unitofwork.Category
+                .GetAll().Select(u=> new SelectListItem
+            {
+                Text= u.Name,
+                Value=u.Id.ToString()
+            });                //will store Category List  //fectch data from DB Use Projections EF core
             return View(objProductList);
         }
 
