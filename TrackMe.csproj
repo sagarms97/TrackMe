@@ -7,11 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\CategoryController - Copy.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Product\Delete.cshtml" />
     <Content Remove="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Remove="wwwroot\js\product.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +27,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\images\product\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\product.js" />
   </ItemGroup>
 
 </Project>
