@@ -1,11 +1,14 @@
 ﻿using Bulky.DataAccess.Data;
 using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
+using Bulky.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TrackMe.Areas.Admin.Controllers
 {
     [Area("Admin")]          //Attribute
+    [Authorize(Roles =SD.Role_Admin)]     //Only admin has access to this page , pasting the url wont work
     public class CategoryController : Controller
     {
         //  private readonly ApplicationDBContext _db;    //we dont need this becz we use interface for category 

@@ -2,6 +2,8 @@
 using Bulky.DataAccess.Repository.IRepository;
 using Bulky.Models;
 using Bulky.Models.ViewModels;
+using Bulky.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
@@ -10,6 +12,8 @@ using System.Collections.Generic;
 namespace TrackMe.Areas.Admin.Controllers
 {
     [Area("Admin")]          //Attribute
+    [Authorize(Roles = SD.Role_Admin)]     //Only admin has access to this page , pasting the url wont work
+
     public class ProductController : Controller
     {
         //  private readonly ApplicationDBContext _db;    //we dont need this becz we use interface for Product 
