@@ -1,0 +1,74 @@
+﻿@model Company
+
+<div class="container">
+      <form method="post" class="row">
+        <div class="card shadow border-0 mt-4">
+            <div class="card-header bg-primary bg-gradient m-lg-0 py-1">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h4 class="text-white py-2"> @(Model.id != 0 ? "Update" : "Create") Company </h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body p-4">
+
+                <input asp-for="id" hidden />
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Company Name</label>
+                        <input asp-for="name" type="text" class="form-control form-control-sm" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Address</label>
+                        <input asp-for="StreetAddress" type="text" class="form-control form-control-sm" />
+                        <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                    </div>
+                   
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">City</label>
+                        <input asp-for="City" type="text" class="form-control form-control-sm" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">State</label>
+                        <input asp-for="State" type="text" class="form-control form-control-sm" />
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                  
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Postal Code</label>
+                        <input asp-for="PostalCode" type="text" class="form-control form-control-sm" />
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Phone Number</label>
+                        <input asp-for="PhoneNumber" type="text" class="form-control form-control-sm" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3 mt-3">
+                        @if (Model.id != 0)
+                        {
+                            <button type="submit" class="btn btn-success form-control form-control-sm">Update</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-success form-control form-control-sm">Save</button>
+                        }
+
+                    </div>
+                    <div class="col-md-3 mt-3">
+                        <a asp-action="CompaniesList" asp-controller="Company" class="btn btn-secondary form-control form-control-sm">Back To List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </form>
+</div>
